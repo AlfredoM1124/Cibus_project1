@@ -10,3 +10,15 @@
 #search {
 	margin-top: 10px;
 }
+.container-fluid {
+	border: 5px solid;
+	border-color: lightblue;
+}
+#leftColumn {
+	border: 2px solid;
+	border-color: black;
+}
+#rightColumn {
+	border: 2px solid;
+	border-color: black;
+}
