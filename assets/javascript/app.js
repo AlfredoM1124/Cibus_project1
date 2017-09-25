@@ -73,6 +73,9 @@ var recipes = [0];
 
 		// Add new recipes into the array //
 		recipes.push(recipes);
+
+		// Clearch the search textbox after user presses submit
+		$("#food").val("");
 		
 	
 	});
