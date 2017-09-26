@@ -1,21 +1,19 @@
 // Initial array of recipes //
 var recipes = [0];
 
-
-
 	// Function to handle events when search button is clicked //
 	$("#search").on("click", function(event) {
 		event.preventDefault();
 
-	// To grap information from textbox
+	// To grab information from textbox //
 	var food = $("#food").val().trim();
 
-	// Yummly API
-	var qeryURL = "http://api.yummly.com/v1/api/recipes?_app_id=b880a9fb&_app_key=9b4724af830829788e087c48dad653e7&q=" + food + "&requirePictures=true&&start=10&";
+	// Yummly API //
+	var queryURL = "http://api.yummly.com/v1/api/recipes?_app_id=b880a9fb&_app_key=9b4724af830829788e087c48dad653e7&q=" + food + "&requirePictures=true&&start=10&";
 	
 	// Create AJAX call for button being clicked //
 	$.ajax({
-		url: qeryURL,
+		url: queryURL,
 		method: "GET"
 
 	// Function after data from AJAX comes back //
