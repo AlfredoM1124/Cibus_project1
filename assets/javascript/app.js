@@ -21,7 +21,6 @@ var recipes = [0];
 	.done(function(response) {
 		console.log(response);
 
-
 	// To save the response //
 	var matches = response.matches;
 	
@@ -46,28 +45,26 @@ var recipes = [0];
 		console.log(cookTime);
 		console.log(flavors);
 		console.log(rating);
-		console.log(course);
-		console.log(cuisine);
+		// console.log(course);
+		// console.log(cuisine);
 		console.log(imageUrl);
 
-
 		// Append recipe matches  //
-		$("#rightColumn").append("<h4><strong><u>" + recipeName + "</strong></u></h4>");
-		$("#rightColumn").append(image);
-		$("#rightColumn").append("<h5>Course: " + course + "</h5>");
-		$("#rightColumn").append("<h5>Cuisine: " + cuisine + "</h5>");
-		$("#rightColumn").append("<h5>Cook time (Minutes): " + Math.floor(cookTime / 60) + "</h5>");
-		$("#rightColumn").append("<h5>Rating ( out of 5): " + rating + "</h5>");
-		$("#rightColumn").append("<h5>Ingredients:</h5>");
-		$("#rightColumn").append("<p>" + ingredients + "</p>");
-		$("#rightColumn").append("<p>Bitter (Flavor): " + Math.round(flavors.bitter * 100) / 100 + "</p>");
-		$("#rightColumn").append("<p>Meaty (Flavor): " + Math.round(flavors.meaty * 100) / 100 + "</p>");
-		$("#rightColumn").append("<p>Piquant (Flavor): " + Math.round(flavors.piquant * 100) / 100 + "</p>");
-		$("#rightColumn").append("<p>Salty (Flavor): " + Math.round(flavors.salty * 100) / 100 + "</p>");
-		$("#rightColumn").append("<p>Sour (Flavor): " + Math.round(flavors.sour * 100) / 100 + "</p>");
-		$("#rightColumn").append("<p>Sweet (Flavor): " + Math.round(flavors.sweet * 100) / 100 + "</p>");
+		$(".card-content").append("<h4><strong>" + recipeName + "</strong></h4>");
+		$(".card-content").append(image);
+		// $(".card-content").append("<h5>Course: " + course + "</h5>");
+		// $(".card-content").append("<h5>Cuisine: " + cuisine + "</h5>");
+		$(".card-content").append("<h5>Cook time (Minutes): " + Math.floor(cookTime / 60) + "</h5>");
+		$(".card-content").append("<h5>Rating ( out of 5): " + rating + "</h5>");
+		$(".card-content").append("<h5>Ingredients:</h5>");
+		$(".card-content").append("<p>" + ingredients + "</p>");
+		$(".card-content").append("<p>Bitter (Flavor): " + Math.round(flavors.bitter * 100) / 100 + "</p>");
+		$(".card-content").append("<p>Meaty (Flavor): " + Math.round(flavors.meaty * 100) / 100 + "</p>");
+		$(".card-content").append("<p>Piquant (Flavor): " + Math.round(flavors.piquant * 100) / 100 + "</p>");
+		$(".card-content").append("<p>Salty (Flavor): " + Math.round(flavors.salty * 100) / 100 + "</p>");
+		$(".card-content").append("<p>Sour (Flavor): " + Math.round(flavors.sour * 100) / 100 + "</p>");
+		$(".card-content").append("<p>Sweet (Flavor): " + Math.round(flavors.sweet * 100) / 100 + "</p>");
 	}
-
 		
 	});
 
@@ -79,7 +76,7 @@ var recipes = [0];
 		$("#food").val("");
 		
 		// Clear old results when entering new search
-		$("#rightColumn").empty();
+		$(".card-content").empty();
 	
 	});
 
