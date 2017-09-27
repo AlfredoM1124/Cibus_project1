@@ -42,6 +42,7 @@
 			src: imageUrl
 		})
 
+	
 		// Console log the for loop
 		console.log(recipeName);
 		console.log(ingredients);
@@ -82,6 +83,35 @@
 
 	
 	}
+	// Zomato API ajax call
+		$.ajax({
+     datatype: "json" , 
+     url: "https://developers.zomato.com/api/v2.1/search",
+     method: 'GET' , 
+     headers: {'user-key' : '6c23e886ba2a04e9caeef4ff77b522ac',},
+     
+	}).done(function(result) {
+    console.log(result);
+
+    var restaurants = result.restaurants;
+
+	for (var i = 0; i < restaurants.length; i++) {
+		var money = restaurants[i].restaurant.currency;
+		var restaurantName = restaurants[i].restaurant.name;
+		var eventURL = restaurants[i].restaurant.events_url;
+		var offers = restaurants[i].restaurant.offers;
+		var address = restaurants[i].restaurant.location.address;
+		var userRating = restaurants[i].restaurant.user_rating.aggregate_rating;
+		var zipcode = restaurants[i].restaurant.location.zipcode;
+	}
+		console.log(money);
+		console.log(restaurantName);
+		console.log(eventURL);
+		console.log(offers);
+		console.log(address);
+		console.log(userRating);
+		console.log(zipcode);
+	});
 
 		
 	});
