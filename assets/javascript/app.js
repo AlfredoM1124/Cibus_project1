@@ -11,11 +11,11 @@
 	var food = $("#food").val().trim();
 
 	// Yummly API
-	var qeryURL = "http://api.yummly.com/v1/api/recipes?_app_id=b880a9fb&_app_key=9b4724af830829788e087c48dad653e7&q=" + food + "&requirePictures=true&&start=10&";
+	var queryURL = "http://api.yummly.com/v1/api/recipes?_app_id=b880a9fb&_app_key=9b4724af830829788e087c48dad653e7&q=" + food + "&requirePictures=true&&start=10&";
 	
 	// Create AJAX call for button being clicked //
 	$.ajax({
-		url: qeryURL,
+		url: queryURL,
 		method: "GET"
 	})
 	
@@ -47,10 +47,10 @@
 		console.log(recipeName);
 		console.log(ingredients);
 		console.log(cookTime);
-		 console.log(flavors);
+		console.log(flavors);
 		console.log(rating);
 		console.log(course);
-		 console.log(cuisine);
+		console.log(cuisine);
 		console.log(imageUrl);
 
 	// Append recipeName, image, course
@@ -103,6 +103,11 @@
 		var address = restaurants[i].restaurant.location.address;
 		var userRating = restaurants[i].restaurant.user_rating.aggregate_rating;
 		var zipcode = restaurants[i].restaurant.location.zipcode;
+		var photoURL = restaurants[i].restaurant.photos_url;
+		var photo = $("<img/>",{
+			id: "restaurantImage",
+			src: photoURL
+		})
 	}
 		console.log(money);
 		console.log(restaurantName);
@@ -111,6 +116,15 @@
 		console.log(address);
 		console.log(userRating);
 		console.log(zipcode);
+		console.log(photoURL);
+
+		$("#leftColumn").append("<h4><strong><u>" + restaurantName + "</strong></u></h4>");
+		$("#leftColumn").append("<h3>" + address + "</h3>");
+		$("#leftColumn").append("<h3>" + offers + "</h3>");
+		$("#leftColumn").append("<h3>" + userRating + "</h3>");
+		$("#leftColumn").append("<h3>" + zipcode + "</h3>");
+		$("#leftColumn").append("<h3>" + money + "</h3>");
+
 	});
 
 		
