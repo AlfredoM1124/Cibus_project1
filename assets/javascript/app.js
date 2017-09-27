@@ -1,5 +1,5 @@
 // Initial array of recipes //
-var recipes = [0];
+// var recipes = [0];
 
 
 
@@ -17,16 +17,16 @@ var recipes = [0];
 	$.ajax({
 		url: qeryURL,
 		method: "GET"
-
-	// Function after data from AJAX comes back //
 	})
+	
+	// Function after data from AJAX comes back //
 	.done(function(response) {
 		console.log(response);
 
 
 	// To save the response //
 	var matches = response.matches;
-	
+	console.log(matches.length);
 	// Loop through yummly api array
 	for (var i = 0; i < matches.length; i++) {
 		var recipeName = matches[i].recipeName;
@@ -42,27 +42,37 @@ var recipes = [0];
 			src: imageUrl
 		})
 
-		// Console log loop
+		// Console log the for loop
 		console.log(recipeName);
 		console.log(ingredients);
 		console.log(cookTime);
-		console.log(flavors);
+		 console.log(flavors);
 		console.log(rating);
 		console.log(course);
-		console.log(cuisine);
+		 console.log(cuisine);
 		console.log(imageUrl);
 
-
-		// Append recipe matches  //
+	// Append recipeName, image, course
 		$("#rightColumn").append("<h4><strong><u>" + recipeName + "</strong></u></h4>");
 		$("#rightColumn").append(image);
 		$("#rightColumn").append("<h5>Course: " + course + "</h5>");
+	
+	// Don't append cuisine if null
+	if (cuisine != undefined) {
 		$("#rightColumn").append("<h5>Cuisine: " + cuisine + "</h5>");
+	}
+
+	// Append matches
 		$("#rightColumn").append("<h5>Cook time (Minutes): " + Math.floor(cookTime / 60) + "</h5>");
 		$("#rightColumn").append("<h5>Rating ( out of 5): " + rating + "</h5>");
 		$("#rightColumn").append("<h5>Ingredients:</h5>");
 		$("#rightColumn").append("<p>" + ingredients + "</p>");
+
+	// Don't append flavors if null	
+	if (flavors != null) {
 		$("#rightColumn").append("<p>Bitter (Flavor): " + Math.round(flavors.bitter * 100) / 100 + "</p>");
+
+	// Append matches
 		$("#rightColumn").append("<p>Meaty (Flavor): " + Math.round(flavors.meaty * 100) / 100 + "</p>");
 		$("#rightColumn").append("<p>Piquant (Flavor): " + Math.round(flavors.piquant * 100) / 100 + "</p>");
 		$("#rightColumn").append("<p>Salty (Flavor): " + Math.round(flavors.salty * 100) / 100 + "</p>");
@@ -70,12 +80,15 @@ var recipes = [0];
 		$("#rightColumn").append("<p>Sweet (Flavor): " + Math.round(flavors.sweet * 100) / 100 + "</p>");
 	}
 
+	
+	}
+
 		
 	});
 
 
 		// Add new recipes into the array //
-		recipes.push(recipes);
+		// recipes.push(recipes);
 
 		// Clearch the search textbox after user presses submit
 		$("#food").val("");
