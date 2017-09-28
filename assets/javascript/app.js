@@ -1,8 +1,3 @@
-// Initial array of recipes //
-// var recipes = [0];
-
-
-
 	// Function to handle events when search button is clicked //
 	$("#search").on("click", function(event) {
 		event.preventDefault();
@@ -23,10 +18,10 @@
 	.done(function(response) {
 		console.log(response);
 
-
 	// To save the response //
 	var matches = response.matches;
 	console.log(matches.length);
+	
 	// Loop through yummly api array
 	for (var i = 0; i < matches.length; i++) {
 		var recipeName = matches[i].recipeName;
@@ -42,7 +37,6 @@
 			src: imageUrl
 		})
 
-	
 		//Console log the for loop
 		console.log(recipeName);
 		console.log(ingredients);
@@ -93,8 +87,10 @@
 	}).done(function(result) {
     console.log(result);
 
+    // To save result
     var restaurants = result.restaurants;
 
+    // For loop for restaurant array
 	for (var j = 0; j < restaurants.length; j++) {
 		var money = restaurants[j].restaurant.currency;
 		var restaurantName = restaurants[j].restaurant.name;
@@ -107,6 +103,8 @@
 			src: photoURL
 		})
 	}
+
+	// Console log loop
 		console.log(money);
 		console.log(restaurantName);
 		console.log(address);
@@ -114,6 +112,7 @@
 		console.log(zipcode);
 		console.log(photoURL);
 
+	// Append results to the screen
 		$("#leftColumn").append("<h4><strong><u>" + restaurantName + "</strong></u></h4>");
 		$("#leftColumn").append(photo);
 		$("#leftColumn").append("<h5>Address: " + address + "</h5>");
@@ -125,11 +124,7 @@
 
 		
 	});
-
-
-		// Add new recipes into the array //
-		// recipes.push(recipes);
-
+		
 		// Clearch the search textbox after user presses submit
 		$("#food").val("");
 		
