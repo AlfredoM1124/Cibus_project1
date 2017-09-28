@@ -1,8 +1,18 @@
 .brand-logo {
-	font-size: 90px; 
+	font-size: 90px;
+	font-weight: bolder;
+	color: #fff8e1; 
+	text-shadow:
+   -1px -1px 0 #000,  
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+     1px 1px 0 #000;
+
 }
 #food{
 	margin-right: 15px;
+	color:;
+	background-color: ;
 }
 #location{
 	margin-right: 20px;
@@ -11,17 +21,18 @@
 	margin-top: 10px;
 }
 .container-fluid {
-	border: 5px solid;
-	border-color: lightblue;
+	border: ;
+	border-color: ;
 }
 #leftColumn {
-	border: 2px solid;
-	border-color: black;
+	border:;
+	border-color: ;
 }
 #rightColumn {
-	border: 2px solid;
-	border-color: black;
+	border: ;
+	border-color: ;
 }
+
 body {
-	background-image: url("FoodBackground.jpeg");
+	background-image: url("");
 }
