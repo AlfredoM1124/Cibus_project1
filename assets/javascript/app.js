@@ -80,7 +80,7 @@
 	// Zomato API ajax call
 		$.ajax({
      datatype: "json" , 
-     url: "https://developers.zomato.com/api/v2.1/search",
+     url: "https://developers.zomato.com/api/v2.1/search?entity_id=601&entity_type=city&count=10&radius=1000&category=10",
      method: 'GET' , 
      headers: {'user-key' : '6c23e886ba2a04e9caeef4ff77b522ac',},
      
@@ -92,33 +92,32 @@
 
     // For loop for restaurant array
 	for (var j = 0; j < restaurants.length; j++) {
-		var money = restaurants[j].restaurant.currency;
 		var restaurantName = restaurants[j].restaurant.name;
 		var address = restaurants[j].restaurant.location.address;
-		var userRating = restaurants[j].restaurant.user_rating.aggregate_rating;
+		var location = restaurants[j].restaurant.location.city;
 		var zipcode = restaurants[j].restaurant.location.zipcode;
-		var photoURL = restaurants[j].restaurant.photos_url;
-		var photo = $("<img/>",{
-			id: "restaurantImage",
-			src: photoURL
-		})
+		var userRating = restaurants[j].restaurant.user_rating.aggregate_rating;
+		var textRating = restaurants[j].restaurant.user_rating.rating_text;
+		
 	}
 
 	// Console log loop
-		console.log(money);
 		console.log(restaurantName);
 		console.log(address);
-		console.log(userRating);
+		console.log(location);
 		console.log(zipcode);
-		console.log(photoURL);
-
+		console.log(userRating);
+		console.log(textRating);
+		
 	// Append results to the screen
 		$("#leftColumn").append("<h4><strong><u>" + restaurantName + "</strong></u></h4>");
-		$("#leftColumn").append(photo);
+		// $("#leftColumn").append(photo);
 		$("#leftColumn").append("<h5>Address: " + address + "</h5>");
+		$("#leftColumn").append("<h5>Location: " + location + "</h5>");
 		$("#leftColumn").append("<h5>Zipcode: " + zipcode + "</h5>");
 		$("#leftColumn").append("<h5>Rating: " + userRating + "</h5>");
-		$("#leftColumn").append("<h5>Price: " + money + "</h5>");
+		$("#leftColumn").append("<h5>Avg. comment: " + textRating + "</h5>");
+		
 
 	});
 
@@ -127,6 +126,7 @@
 		
 		// Clearch the search textbox after user presses submit
 		$("#food").val("");
+		$("#location").val("");
 		
 		// Clear old results when entering new search
 		$("#rightColumn").empty();
