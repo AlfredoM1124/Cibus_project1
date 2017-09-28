@@ -22,3 +22,6 @@
 	border: 2px solid;
 	border-color: black;
 }
+body {
+	background-image: url("FoodBackground.jpeg");
+}
