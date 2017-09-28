@@ -48,31 +48,31 @@
 		console.log(imageUrl);
 
 	// Append recipeName, image, course
-		$("#rightColumn").append("<h4><strong><u>" + recipeName + "</strong></u></h4>");
-		$("#rightColumn").append(image);
-		$("#rightColumn").append("<h5>Course: " + course + "</h5>");
+		$("#rightContent").append("<h4><strong><u>" + recipeName + "</strong></u></h4>");
+		$("#rightContent").append(image);
+		$("#rightContent").append("<h5>Course: " + course + "</h5>");
 	
 	// Don't append cuisine if null
 	if (cuisine != undefined) {
-		$("#rightColumn").append("<h5>Cuisine: " + cuisine + "</h5>");
+		$("#rightContent").append("<h5>Cuisine: " + cuisine + "</h5>");
 	}
 
 	// Append matches
-		$("#rightColumn").append("<h5>Cook time (Minutes): " + Math.floor(cookTime / 60) + "</h5>");
-		$("#rightColumn").append("<h5>Rating ( out of 5): " + rating + "</h5>");
-		$("#rightColumn").append("<h5>Ingredients:</h5>");
-		$("#rightColumn").append("<p>" + ingredients + "</p>");
+		$("#rightContent").append("<h5>Cook time (Minutes): " + Math.floor(cookTime / 60) + "</h5>");
+		$("#rightContent").append("<h5>Rating ( out of 5): " + rating + "</h5>");
+		$("#rightContent").append("<h5>Ingredients:</h5>");
+		$("#rightContent").append("<p>" + ingredients + "</p>");
 
 	// Don't append flavors if null	
 	if (flavors != null) {
-		$("#rightColumn").append("<p>Bitter (Flavor): " + Math.round(flavors.bitter * 100) / 100 + "</p>");
+		$("#rightContent").append("<p>Bitter (Flavor): " + Math.round(flavors.bitter * 100) / 100 + "</p>");
 
 	// Append matches
-		$("#rightColumn").append("<p>Meaty (Flavor): " + Math.round(flavors.meaty * 100) / 100 + "</p>");
-		$("#rightColumn").append("<p>Piquant (Flavor): " + Math.round(flavors.piquant * 100) / 100 + "</p>");
-		$("#rightColumn").append("<p>Salty (Flavor): " + Math.round(flavors.salty * 100) / 100 + "</p>");
-		$("#rightColumn").append("<p>Sour (Flavor): " + Math.round(flavors.sour * 100) / 100 + "</p>");
-		$("#rightColumn").append("<p>Sweet (Flavor): " + Math.round(flavors.sweet * 100) / 100 + "</p>");
+		$("#rightContent").append("<p>Meaty (Flavor): " + Math.round(flavors.meaty * 100) / 100 + "</p>");
+		$("#rightContent").append("<p>Piquant (Flavor): " + Math.round(flavors.piquant * 100) / 100 + "</p>");
+		$("#rightContent").append("<p>Salty (Flavor): " + Math.round(flavors.salty * 100) / 100 + "</p>");
+		$("#rightContent").append("<p>Sour (Flavor): " + Math.round(flavors.sour * 100) / 100 + "</p>");
+		$("#rightContent").append("<p>Sweet (Flavor): " + Math.round(flavors.sweet * 100) / 100 + "</p>");
 	}
 
 	
@@ -116,14 +116,14 @@
 		console.log(textRating);
 		
 	// Append results to the screen
-		$("#leftColumn").append("<h4><strong><u>" + restaurantName + "</strong></u></h4>");
-		$("#leftColumn").append(pictures);
-		$("#leftColumn").append("<h5>Address: " + address + "</h5>");
-		$("#leftColumn").append("<h5>Location: " + location + "</h5>");
-		$("#leftColumn").append("<h5>Zipcode: " + zipcode + "</h5>");
-		$("#leftColumn").append("<h5>Rating: " + userRating + "</h5>");
-		$("#leftColumn").append("<h5>Num. of votes: " + votes + "</h5>");
-		$("#leftColumn").append("<h5>Avg. comment: " + textRating + "</h5>");
+		$("#leftContent").append("<h4><strong><u>" + restaurantName + "</strong></u></h4>");
+		$("#leftContent").append(pictures);
+		$("#leftContent").append("<h5>Address: " + address + "</h5>");
+		$("#leftContent").append("<h5>Location: " + location + "</h5>");
+		$("#leftContent").append("<h5>Zipcode: " + zipcode + "</h5>");
+		$("#leftContent").append("<h5>Rating: " + userRating + "</h5>");
+		$("#leftContent").append("<h5>Num. of votes: " + votes + "</h5>");
+		$("#leftContent").append("<h5>Avg. comment: " + textRating + "</h5>");
 	}
 
 	});
@@ -136,8 +136,8 @@
 		$("#location").val("");
 		
 		// Clear old results when entering new search
-		$("#rightColumn").empty();
-		$("#leftColumn").empty();
+		$("#rightContent").empty();
+		$("#leftContent").empty();
 	
 	});
 
