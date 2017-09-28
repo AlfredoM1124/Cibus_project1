@@ -48,31 +48,31 @@
 		console.log(imageUrl);
 
 	// Append recipeName, image, course
-		$("#rightContent").append("<h4><strong><u>" + recipeName + "</strong></u></h4>");
-		$("#rightContent").append(image);
-		$("#rightContent").append("<h5>Course: " + course + "</h5>");
+		$("#rightColumn").append("<h4><strong><u>" + recipeName + "</strong></u></h4>");
+		$("#rightColumn").append(image);
+		$("#rightColumn").append("<h5>Course: " + course + "</h5>");
 	
 	// Don't append cuisine if null
 	if (cuisine != undefined) {
-		$("#rightContent").append("<h5>Cuisine: " + cuisine + "</h5>");
+		$("#rightColumn").append("<h5>Cuisine: " + cuisine + "</h5>");
 	}
 
 	// Append matches
-		$("#rightContent").append("<h5>Cook time (Minutes): " + Math.floor(cookTime / 60) + "</h5>");
-		$("#rightContent").append("<h5>Rating ( out of 5): " + rating + "</h5>");
-		$("#rightContent").append("<h5>Ingredients:</h5>");
-		$("#rightContent").append("<p>" + ingredients + "</p>");
+		$("#rightColumn").append("<h5>Cook time (Minutes): " + Math.floor(cookTime / 60) + "</h5>");
+		$("#rightColumn").append("<h5>Rating ( out of 5): " + rating + "</h5>");
+		$("#rightColumn").append("<h5>Ingredients:</h5>");
+		$("#rightColumn").append("<p>" + ingredients + "</p>");
 
 	// Don't append flavors if null	
 	if (flavors != null) {
-		$("#rightContent").append("<p>Bitter (Flavor): " + Math.round(flavors.bitter * 100) / 100 + "</p>");
+		$("#rightColumn").append("<p>Bitter (Flavor): " + Math.round(flavors.bitter * 100) / 100 + "</p>");
 
 	// Append matches
-		$("#rightContent").append("<p>Meaty (Flavor): " + Math.round(flavors.meaty * 100) / 100 + "</p>");
-		$("#rightContent").append("<p>Piquant (Flavor): " + Math.round(flavors.piquant * 100) / 100 + "</p>");
-		$("#rightContent").append("<p>Salty (Flavor): " + Math.round(flavors.salty * 100) / 100 + "</p>");
-		$("#rightContent").append("<p>Sour (Flavor): " + Math.round(flavors.sour * 100) / 100 + "</p>");
-		$("#rightContent").append("<p>Sweet (Flavor): " + Math.round(flavors.sweet * 100) / 100 + "</p>");
+		$("#rightColumn").append("<p>Meaty (Flavor): " + Math.round(flavors.meaty * 100) / 100 + "</p>");
+		$("#rightColumn").append("<p>Piquant (Flavor): " + Math.round(flavors.piquant * 100) / 100 + "</p>");
+		$("#rightColumn").append("<p>Salty (Flavor): " + Math.round(flavors.salty * 100) / 100 + "</p>");
+		$("#rightColumn").append("<p>Sour (Flavor): " + Math.round(flavors.sour * 100) / 100 + "</p>");
+		$("#rightColumn").append("<p>Sweet (Flavor): " + Math.round(flavors.sweet * 100) / 100 + "</p>");
 	}
 
 	
@@ -80,15 +80,16 @@
 	// Zomato API ajax call
 		$.ajax({
      datatype: "json" , 
-     url: "https://developers.zomato.com/api/v2.1/search?entity_id=601&entity_type=city&count=10&radius=1000&category=10",
+     url: "https://developers.zomato.com/api/v2.1/search?entity_id=601&entity_type=city&q=" + food + "&count=10&radius=2000",
      method: 'GET' , 
      headers: {'user-key' : '6c23e886ba2a04e9caeef4ff77b522ac',},
      
-	}).done(function(result) {
-    console.log(result);
+	}).done(function(results) {
+    console.log(results);
 
     // To save result
-    var restaurants = result.restaurants;
+    var restaurants = results.restaurants;
+    console.log(results.restaurants);
 
     // For loop for restaurant array
 	for (var j = 0; j < restaurants.length; j++) {
@@ -97,28 +98,33 @@
 		var location = restaurants[j].restaurant.location.city;
 		var zipcode = restaurants[j].restaurant.location.zipcode;
 		var userRating = restaurants[j].restaurant.user_rating.aggregate_rating;
+		var votes = restaurants[j].restaurant.user_rating.votes;
 		var textRating = restaurants[j].restaurant.user_rating.rating_text;
+		var pictureUrl = restaurants[j].restaurant.url;
+		var pictures = $("<img/>",{
+			id: "restaurantImage",
+			src: pictureUrl
+		})
 		
-	}
-
 	// Console log loop
 		console.log(restaurantName);
 		console.log(address);
 		console.log(location);
 		console.log(zipcode);
 		console.log(userRating);
+		console.log(votes);
 		console.log(textRating);
 		
 	// Append results to the screen
-
-		$("#leftContent").append("<h4><strong><u>" + restaurantName + "</strong></u></h4>");
-		// $("#leftContent").append(photo);
-		$("#leftContent").append("<h5>Address: " + address + "</h5>");
-		$("#leftContent").append("<h5>Location: " + location + "</h5>");
-		$("#leftContent").append("<h5>Zipcode: " + zipcode + "</h5>");
-		$("#leftContent").append("<h5>Rating: " + userRating + "</h5>");
-		$("#leftContent").append("<h5>Avg. comment: " + textRating + "</h5>");
-		
+		$("#leftColumn").append("<h4><strong><u>" + restaurantName + "</strong></u></h4>");
+		$("#leftColumn").append(pictures);
+		$("#leftColumn").append("<h5>Address: " + address + "</h5>");
+		$("#leftColumn").append("<h5>Location: " + location + "</h5>");
+		$("#leftColumn").append("<h5>Zipcode: " + zipcode + "</h5>");
+		$("#leftColumn").append("<h5>Rating: " + userRating + "</h5>");
+		$("#leftColumn").append("<h5>Num. of votes: " + votes + "</h5>");
+		$("#leftColumn").append("<h5>Avg. comment: " + textRating + "</h5>");
+	}
 
 	});
 
@@ -130,8 +136,8 @@
 		$("#location").val("");
 		
 		// Clear old results when entering new search
-		$("#rightContent").empty();
-		$("#leftContent").empty();
+		$("#rightColumn").empty();
+		$("#leftColumn").empty();
 	
 	});
 
