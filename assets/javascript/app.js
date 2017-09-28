@@ -43,7 +43,7 @@
 		})
 
 	
-		// Console log the for loop
+		//Console log the for loop
 		console.log(recipeName);
 		console.log(ingredients);
 		console.log(cookTime);
@@ -95,15 +95,13 @@
 
     var restaurants = result.restaurants;
 
-	for (var i = 0; i < restaurants.length; i++) {
-		var money = restaurants[i].restaurant.currency;
-		var restaurantName = restaurants[i].restaurant.name;
-		var eventURL = restaurants[i].restaurant.events_url;
-		var offers = restaurants[i].restaurant.offers;
-		var address = restaurants[i].restaurant.location.address;
-		var userRating = restaurants[i].restaurant.user_rating.aggregate_rating;
-		var zipcode = restaurants[i].restaurant.location.zipcode;
-		var photoURL = restaurants[i].restaurant.photos_url;
+	for (var j = 0; j < restaurants.length; j++) {
+		var money = restaurants[j].restaurant.currency;
+		var restaurantName = restaurants[j].restaurant.name;
+		var address = restaurants[j].restaurant.location.address;
+		var userRating = restaurants[j].restaurant.user_rating.aggregate_rating;
+		var zipcode = restaurants[j].restaurant.location.zipcode;
+		var photoURL = restaurants[j].restaurant.photos_url;
 		var photo = $("<img/>",{
 			id: "restaurantImage",
 			src: photoURL
@@ -111,19 +109,17 @@
 	}
 		console.log(money);
 		console.log(restaurantName);
-		console.log(eventURL);
-		console.log(offers);
 		console.log(address);
 		console.log(userRating);
 		console.log(zipcode);
 		console.log(photoURL);
 
 		$("#leftColumn").append("<h4><strong><u>" + restaurantName + "</strong></u></h4>");
-		$("#leftColumn").append("<h3>" + address + "</h3>");
-		$("#leftColumn").append("<h3>" + offers + "</h3>");
-		$("#leftColumn").append("<h3>" + userRating + "</h3>");
-		$("#leftColumn").append("<h3>" + zipcode + "</h3>");
-		$("#leftColumn").append("<h3>" + money + "</h3>");
+		$("#leftColumn").append(photo);
+		$("#leftColumn").append("<h5>Address: " + address + "</h5>");
+		$("#leftColumn").append("<h5>Zipcode: " + zipcode + "</h5>");
+		$("#leftColumn").append("<h5>Rating: " + userRating + "</h5>");
+		$("#leftColumn").append("<h5>Price: " + money + "</h5>");
 
 	});
 
@@ -139,6 +135,7 @@
 		
 		// Clear old results when entering new search
 		$("#rightColumn").empty();
+		$("#leftColumn").empty();
 	
 	});
 
