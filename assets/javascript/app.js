@@ -1,5 +1,14 @@
-	// Function to handle events when search button is clicked //
+	//Click and Enter key events
 	$("#search").on("click", function(event) {
+		Enter(event);
+	})
+	$("#food").keypress(function(event) {
+    if(event.which == 13) {
+        Enter(event);
+    }
+});
+	// Function to handle events when search button is clicked //
+	 function Enter(event) {
 		event.preventDefault();
 
 	// To grap information from textbox
@@ -100,10 +109,12 @@
 		var userRating = restaurants[j].restaurant.user_rating.aggregate_rating;
 		var votes = restaurants[j].restaurant.user_rating.votes;
 		var textRating = restaurants[j].restaurant.user_rating.rating_text;
-		var pictureUrl = restaurants[j].restaurant.url;
-		var pictures = $("<img/>",{
-			id: "restaurantImage",
-			src: pictureUrl
+		var menuUrl = restaurants[j].restaurant.menu_url;
+		var menu = $("<a/>",{
+			id: "menuRestaurant",
+			href: menuUrl,
+			text: "menu",
+			target: "_blank"
 		})
 		
 	// Console log loop
@@ -117,7 +128,7 @@
 		
 	// Append results to the screen
 		$("#leftContent").append("<h4><strong><u>" + restaurantName + "</strong></u></h4>");
-		$("#leftContent").append(pictures);
+		$("#leftContent").append(menu);
 		$("#leftContent").append("<h5>Address: " + address + "</h5>");
 		$("#leftContent").append("<h5>Location: " + location + "</h5>");
 		$("#leftContent").append("<h5>Zipcode: " + zipcode + "</h5>");
@@ -139,6 +150,6 @@
 		$("#rightContent").empty();
 		$("#leftContent").empty();
 	
-	});
+	};
 
 	
