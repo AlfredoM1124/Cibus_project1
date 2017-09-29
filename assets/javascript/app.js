@@ -25,11 +25,11 @@
 	
 	// Function after data from AJAX comes back //
 	.done(function(response) {
-		console.log(response);
+	// console.log(response);
 
 	// To save the response //
 	var matches = response.matches;
-	console.log(matches.length);
+	// console.log(matches.length);
 	
 	// Loop through yummly api array
 	for (var i = 0; i < matches.length; i++) {
@@ -47,17 +47,17 @@
 		})
 
 		//Console log the for loop
-		console.log(recipeName);
-		console.log(ingredients);
-		console.log(cookTime);
-		console.log(flavors);
-		console.log(rating);
-		console.log(course);
-		console.log(cuisine);
-		console.log(imageUrl);
+		// console.log(recipeName);
+		// console.log(ingredients);
+		// console.log(cookTime);
+		// console.log(flavors);
+		// console.log(rating);
+		// console.log(course);
+		// console.log(cuisine);
+		// console.log(imageUrl);
 
 	// Append recipeName, image, course
-		$("#rightContent").append("<h4><strong><u>" + recipeName + "</strong></u></h4>");
+	    $("#rightContent").append("<h4><strong><u>" + recipeName + "</strong></u></h4>");
 		$("#rightContent").append(image);
 		$("#rightContent").append("<h5>Course: " + course + "</h5>");
 	
@@ -68,9 +68,11 @@
 
 	// Append matches
 		$("#rightContent").append("<h5>Cook time (Minutes): " + Math.floor(cookTime / 60) + "</h5>");
-		$("#rightContent").append("<h5>Rating ( out of 5): " + rating + "</h5>");
+		$("#rightContent").append("<h5>Rating: " + rating + "/5</h5>");
 		$("#rightContent").append("<h5>Ingredients:</h5>");
 		$("#rightContent").append("<p>" + ingredients + "</p>");
+
+		$("#rightContent").append("")
 
 	// Don't append flavors if null	
 	if (flavors != null) {
@@ -78,7 +80,7 @@
 
 	// Append matches
 		$("#rightContent").append("<p>Meaty (Flavor): " + Math.round(flavors.meaty * 100) / 100 + "</p>");
-		$("#rightContent").append("<p>Piquant (Flavor): " + Math.round(flavors.piquant * 100) / 100 + "</p>");
+		// $("#rightContent").append("<p>Piquant (Flavor): " + Math.round(flavors.piquant * 100) / 100 + "</p>");
 		$("#rightContent").append("<p>Salty (Flavor): " + Math.round(flavors.salty * 100) / 100 + "</p>");
 		$("#rightContent").append("<p>Sour (Flavor): " + Math.round(flavors.sour * 100) / 100 + "</p>");
 		$("#rightContent").append("<p>Sweet (Flavor): " + Math.round(flavors.sweet * 100) / 100 + "</p>");
@@ -87,18 +89,20 @@
 	
 	}
 	// Zomato API ajax call
-		$.ajax({
-     datatype: "json" , 
-     url: "https://developers.zomato.com/api/v2.1/search?entity_id=601&entity_type=city&q=" + food + "&count=10&radius=2000",
-     method: 'GET' , 
-     headers: {'user-key' : '6c23e886ba2a04e9caeef4ff77b522ac',},
+	$.ajax({
+    	datatype: "json" , 
+    	url: "https://developers.zomato.com/api/v2.1/search?entity_id=601&entity_type=city&q=" + food + "&count=10&radius=2000",
+   	    method: 'GET' , 
+    	headers: {'user-key' : '6c23e886ba2a04e9caeef4ff77b522ac',},
      
-	}).done(function(results) {
-    console.log(results);
+	})
+	.done(function(results) {
+
+    	// console.log(results);
 
     // To save result
     var restaurants = results.restaurants;
-    console.log(results.restaurants);
+    // console.log(results.restaurants);
 
     // For loop for restaurant array
 	for (var j = 0; j < restaurants.length; j++) {
@@ -113,18 +117,18 @@
 		var menu = $("<a/>",{
 			id: "menuRestaurant",
 			href: menuUrl,
-			text: "menu",
+			text: "Menu",
 			target: "_blank"
 		})
 		
 	// Console log loop
-		console.log(restaurantName);
-		console.log(address);
-		console.log(location);
-		console.log(zipcode);
-		console.log(userRating);
-		console.log(votes);
-		console.log(textRating);
+		// console.log(restaurantName);
+		// console.log(address);
+		// console.log(location);
+		// console.log(zipcode);
+		// console.log(userRating);
+		// console.log(votes);
+		// console.log(textRating);
 		
 	// Append results to the screen
 		$("#leftContent").append("<h4><strong><u>" + restaurantName + "</strong></u></h4>");
@@ -139,9 +143,8 @@
 
 	});
 
-		
 	});
-		
+	
 		// Clearch the search textbox after user presses submit
 		$("#food").val("");
 		$("#location").val("");
@@ -149,7 +152,13 @@
 		// Clear old results when entering new search
 		$("#rightContent").empty();
 		$("#leftContent").empty();
-	
 	};
+
+	function newCard(){
+		for (var i = 0; i < matches.length; i++){
+			// Div for the recipe cards
+			var recipeDiv = $("<div>");
+		}
+	}
 
 	

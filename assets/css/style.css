@@ -9,13 +9,18 @@
      1px 1px 0 #000;
 
 }
+#menuRestaurant{
+	color: blue;
+
+}
 #food{
 	margin-right: 15px;
-	color:;
-	background-color: ;
+	color: white;
+	background-color:;
 }
 #location{
 	margin-right: 20px;
+	color: white;
 }
 #search {
 	margin-top: 10px;
@@ -34,5 +39,6 @@
 }
 
 body {
-	background-image: url("");
+	background-image: url("foodtopia.jpg");
+
 }
