@@ -31,6 +31,9 @@
 	var matches = response.matches;
 	// console.log(matches.length);
 	
+	// To select div matching id
+		var recipeDiv = $("#rightContent");
+
 	// Loop through yummly api array
 	for (var i = 0; i < matches.length; i++) {
 		var recipeName = matches[i].recipeName;
@@ -46,6 +49,16 @@
 			src: imageUrl
 		})
 
+	// Create new div for each of the matches
+		var newRecipeDiv = $("<div>" + matches[i] + "</div>");
+
+	// Append to rightContent
+		recipeDiv.append("<h4><strong><u>" + recipeName + "</strong></u></h4>");
+		recipeDiv.append(image);
+		recipeDiv.append("<h5>Cook time (Minutes): " + Math.floor(cookTime / 60) + "</h5>");
+		recipeDiv.append("<h5>Rating (0/5): " + rating + "</h5>");
+		recipeDiv.append("<h5>Ingredients: " + ingredients + "</h5>");
+
 		//Console log the for loop
 		// console.log(recipeName);
 		// console.log(ingredients);
@@ -55,39 +68,9 @@
 		// console.log(course);
 		// console.log(cuisine);
 		// console.log(imageUrl);
-
-	// Append recipeName, image, course
-	    $("#rightContent").append("<h4><strong><u>" + recipeName + "</strong></u></h4>");
-		$("#rightContent").append(image);
-		$("#rightContent").append("<h5>Course: " + course + "</h5>");
-	
-	// Don't append cuisine if null
-	if (cuisine != undefined) {
-		$("#rightContent").append("<h5>Cuisine: " + cuisine + "</h5>");
-	}
-
-	// Append matches
-		$("#rightContent").append("<h5>Cook time (Minutes): " + Math.floor(cookTime / 60) + "</h5>");
-		$("#rightContent").append("<h5>Rating: " + rating + "/5</h5>");
-		$("#rightContent").append("<h5>Ingredients:</h5>");
-		$("#rightContent").append("<p>" + ingredients + "</p>");
-
-		$("#rightContent").append("")
-
-	// Don't append flavors if null	
-	if (flavors != null) {
-		$("#rightContent").append("<p>Bitter (Flavor): " + Math.round(flavors.bitter * 100) / 100 + "</p>");
-
-	// Append matches
-		$("#rightContent").append("<p>Meaty (Flavor): " + Math.round(flavors.meaty * 100) / 100 + "</p>");
-		// $("#rightContent").append("<p>Piquant (Flavor): " + Math.round(flavors.piquant * 100) / 100 + "</p>");
-		$("#rightContent").append("<p>Salty (Flavor): " + Math.round(flavors.salty * 100) / 100 + "</p>");
-		$("#rightContent").append("<p>Sour (Flavor): " + Math.round(flavors.sour * 100) / 100 + "</p>");
-		$("#rightContent").append("<p>Sweet (Flavor): " + Math.round(flavors.sweet * 100) / 100 + "</p>");
-	}
-
 	
 	}
+
 	// Zomato API ajax call
 	$.ajax({
     	datatype: "json" , 
@@ -103,6 +86,9 @@
     // To save result
     var restaurants = results.restaurants;
     // console.log(results.restaurants);
+
+    // To select div matching id
+		var restaurantDiv = $("#leftContent");
 
     // For loop for restaurant array
 	for (var j = 0; j < restaurants.length; j++) {
@@ -120,7 +106,19 @@
 			text: "Menu",
 			target: "_blank"
 		})
-		
+	// Create new div for each of the restaurants
+		var newRestaurantDiv = $("<div>" + restaurants[i] + "</div>");
+
+	// Append results to leftContent
+		restaurantDiv.append("<h4><strong><u>" + restaurantName + "</h4></strong></u>");
+		restaurantDiv.append(menu);
+		restaurantDiv.append("<h5>Addres: " + address + "</h5>");
+		restaurantDiv.append("<h5>Location: " + location + "</h5>");
+		restaurantDiv.append("<h5>Zipcode: " + zipcode + "<h5>");
+		restaurantDiv.append("<h5>Rating (0/5): " + userRating + "</h5>");
+		restaurantDiv.append("<h5>Votes: " + votes + "</h5>");
+		restaurantDiv.append("<h5> Comments: " + textRating + "</h5>");
+
 	// Console log loop
 		// console.log(restaurantName);
 		// console.log(address);
@@ -129,16 +127,7 @@
 		// console.log(userRating);
 		// console.log(votes);
 		// console.log(textRating);
-		
-	// Append results to the screen
-		$("#leftContent").append("<h4><strong><u>" + restaurantName + "</strong></u></h4>");
-		$("#leftContent").append(menu);
-		$("#leftContent").append("<h5>Address: " + address + "</h5>");
-		$("#leftContent").append("<h5>Location: " + location + "</h5>");
-		$("#leftContent").append("<h5>Zipcode: " + zipcode + "</h5>");
-		$("#leftContent").append("<h5>Rating: " + userRating + "</h5>");
-		$("#leftContent").append("<h5>Num. of votes: " + votes + "</h5>");
-		$("#leftContent").append("<h5>Avg. comment: " + textRating + "</h5>");
+			
 	}
 
 	});
@@ -154,11 +143,5 @@
 		$("#leftContent").empty();
 	};
 
-	function newCard(){
-		for (var i = 0; i < matches.length; i++){
-			// Div for the recipe cards
-			var recipeDiv = $("<div>");
-		}
-	}
-
+	
 	
