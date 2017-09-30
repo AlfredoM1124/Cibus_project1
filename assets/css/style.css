@@ -14,6 +14,18 @@
      1px 1px 0 #00695c;
 
 }
+#instructions{
+	font-family: ;
+	font-size: 25px;
+	background-color:#b2dfdb ;
+	color: #fff8e1;
+	text-shadow:
+   -1px -1px 0 #000,  
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+     1px 1px 0 #000;
+
+}
 #menuRestaurant{
 	color: blue;
 
@@ -34,7 +46,7 @@
 }
 .container-fluid {
 	border: ;
-	border-color: ;
+	border-color:;
 }
 #leftColumn {
 	border:;
@@ -45,8 +57,15 @@
 	border-color: ;
 }
 #recipeImage{
-	border: dashed;
-	border-color: #FC4A1A;
+	border: solid;
+	border-width: 1px;
+	border-color: #4ABDAC;
+}
+#menuRestaurant{
+	font-size: 25px;
+}
+h5{
+	color:;
 }
 
 body {

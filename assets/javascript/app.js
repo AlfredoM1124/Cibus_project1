@@ -56,7 +56,7 @@
 		recipeDiv.append("<h4><strong><u>" + recipeName + "</strong></u></h4>");
 		recipeDiv.append(image);
 		recipeDiv.append("<h5>Cook time (Minutes): " + Math.floor(cookTime / 60) + "</h5>");
-		recipeDiv.append("<h5>Rating (0/5): " + rating + "</h5>");
+		recipeDiv.append("<h5>Rating: " + rating + " out of 5</h5>");
 		recipeDiv.append("<h5>Ingredients: " + ingredients + "</h5>");
 
 		//Console log the for loop
@@ -111,11 +111,11 @@
 
 	// Append results to leftContent
 		restaurantDiv.append("<h4><strong><u>" + restaurantName + "</h4></strong></u>");
-		restaurantDiv.append(menu);
+		restaurantDiv.append( menu );
 		restaurantDiv.append("<h5>Address: " + address + "</h5>");
 		restaurantDiv.append("<h5>Location: " + location + "</h5>");
 		restaurantDiv.append("<h5>Zipcode: " + zipcode + "<h5>");
-		restaurantDiv.append("<h5>Rating (0/5): " + userRating + "</h5>");
+		restaurantDiv.append("<h5>Rating: " + userRating + " out of 5</h5>");
 		restaurantDiv.append("<h5>Votes: " + votes + "</h5>");
 		restaurantDiv.append("<h5> Comments: " + textRating + "</h5>");
 
