@@ -58,6 +58,7 @@
 		recipeDiv.append("<h5>Cook time (Minutes): " + Math.floor(cookTime / 60) + "</h5>");
 		recipeDiv.append("<h5>Rating: " + rating + " out of 5</h5>");
 		recipeDiv.append("<h5>Ingredients: " + ingredients + "</h5>");
+		recipeDiv.append("<h3>____________________________</h3>")
 
 		//Console log the for loop
 		// console.log(recipeName);
@@ -118,6 +119,7 @@
 		restaurantDiv.append("<h5>Rating: " + userRating + " out of 5</h5>");
 		restaurantDiv.append("<h5>Votes: " + votes + "</h5>");
 		restaurantDiv.append("<h5> Comments: " + textRating + "</h5>");
+		restaurantDiv.append("<h3>_____________________________</h3>")
 
 	// Console log loop
 		// console.log(restaurantName);

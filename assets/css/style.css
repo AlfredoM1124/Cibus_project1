@@ -1,3 +1,4 @@
+
 .jumbotron {
 	background-color: #4ABDAC;
 }
@@ -16,7 +17,7 @@
 }
 #instructions{
 	font-family: ;
-	font-size: 25px;
+	font-size: 45px;
 	background-color:#b2dfdb ;
 	color: #fff8e1;
 	text-shadow:
@@ -57,14 +58,25 @@
 	border-color: ;
 }
 #recipeImage{
+	align-content: center;
 	border: solid;
 	border-width: 1px;
 	border-color: #4ABDAC;
 }
 #menuRestaurant{
+	align-content: center;
+	text-align: right;
 	font-size: 25px;
 }
+
+h3{
+	color: #FC4A1A;
+}
+h4{
+	text-align: center;
+}
 h5{
+	/*text-align: center;*/
 	color:;
 }
 
