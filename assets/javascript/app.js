@@ -14,62 +14,68 @@
 	// To grap information from textbox
 	var food = $("#food").val().trim();
 
-	// Yummly API
-	var queryURL = "http://api.yummly.com/v1/api/recipes?_app_id=b880a9fb&_app_key=9b4724af830829788e087c48dad653e7&q=" + food + "&requirePictures=true&&start=10&";
+	// Edamam API
+	var queryURL = "https://api.edamam.com/search?q=" + food;
 	
 	// Create AJAX call for button being clicked //
 	$.ajax({
 		url: queryURL,
-		method: "GET"
+		method: "GET",
+		headers: {"user-key" : "76cfee1bdefd0ffe94d080015296f7e1"}
+		// headers: {'application keys' : '76cfee1bdefd0ffe94d080015296f7e1,},
 	})
 	
 	// Function after data from AJAX comes back //
 	.done(function(response) {
-	// console.log(response);
+	console.log(response);
 
 	// To save the response //
-	var matches = response.matches;
-	// console.log(matches.length);
+	var hits = response.hits;
+	// console.log(params.length);
 	
 	// To select div matching id
 		var recipeDiv = $("#rightContent");
 
-	// Loop through yummly api array
-	for (var i = 0; i < matches.length; i++) {
-		var recipeName = matches[i].recipeName;
-		var cookTime = matches[i].totalTimeInSeconds;
-		var ingredients = matches[i].ingredients;
-		var flavors = matches[i].flavors;
-		var rating = matches[i].rating;
-		var course = matches[i].attributes.course;
-		var cuisine = matches[i].attributes.cuisine;
-		var imageUrl = matches[i].smallImageUrls;
+	// Loop through Edamam api array
+	for (var i = 0; i < hits.length; i++) {
+		var recipeName = hits[i].recipe.label;
+		var diet = hits[i].recipe.dietLabels;
+		var ingredients = hits[i].recipe.ingredientLines;
+		var allergies = hits[i].recipe.healthLabels;
+		var servings = hits[i].recipe.yield;
+		var recipeUrl = hits[i].recipe.url;
+		var recipeSteps = $("<a/>",{
+			id: "Steps",
+			href: recipeUrl,
+			text: "Recipe",
+			target: "_blank"
+		})
+		var imageUrl = hits[i].recipe.image;
 		var image = $("<img/>",{
 			id: "recipeImage",
 			src: imageUrl
 		})
 
-	// Create new div for each of the matches
-		var newRecipeDiv = $("<div>" + matches[i] + "</div>");
+	// Create new div for each of the params
+		var newRecipeDiv = $("<div>" + hits[i] + "</div>");
 
 	// Append to rightContent
-		recipeDiv.append("<h4><strong><u>" + recipeName + "</strong></u></h4>");
+		recipeDiv.append("<h4><strong><u>" + recipeName + "</strong></u></h4");
 		recipeDiv.append(image);
-		recipeDiv.append("<h5>Cook time (Minutes): " + Math.floor(cookTime / 60) + "</h5>");
-		recipeDiv.append("<h5>Rating: " + rating + " out of 5</h5>");
-		recipeDiv.append("<h5>Ingredients: " + ingredients + "</h5>");
-		recipeDiv.append("<h3>____________________________</h3>")
+		recipeDiv.append("<h5><strong>Diet: </strong>" + diet + "</h5>");
+		recipeDiv.append("<h5><strong>Allergy friendly: </strong>" + allergies + "</h5>");
+		recipeDiv.append("<h5><strong>Servings: </strong>" + servings + "</h5>");
+		recipeDiv.append("<h5><strong>Ingredients: </strong>" + ingredients + "</h5>");
+		recipeDiv.append("<h5><i>Click below for step by step recipe:</i></h5>");
+		recipeDiv.append(recipeSteps);		
 
 		//Console log the for loop
 		// console.log(recipeName);
+		// console.log(diet);
+		// console.log(allergies);
+		// console.log(servings);
 		// console.log(ingredients);
-		// console.log(cookTime);
-		// console.log(flavors);
-		// console.log(rating);
-		// console.log(course);
-		// console.log(cuisine);
-		// console.log(imageUrl);
-	
+			
 	}
 
 	// Zomato API ajax call
@@ -112,14 +118,13 @@
 
 	// Append results to leftContent
 		restaurantDiv.append("<h4><strong><u>" + restaurantName + "</h4></strong></u>");
-		restaurantDiv.append( menu );
-		restaurantDiv.append("<h5>Address: " + address + "</h5>");
+		restaurantDiv.append(menu);
+		restaurantDiv.append("<h5>Addres: " + address + "</h5>");
 		restaurantDiv.append("<h5>Location: " + location + "</h5>");
 		restaurantDiv.append("<h5>Zipcode: " + zipcode + "<h5>");
-		restaurantDiv.append("<h5>Rating: " + userRating + " out of 5</h5>");
+		restaurantDiv.append("<h5>Rating (0/5): " + userRating + "</h5>");
 		restaurantDiv.append("<h5>Votes: " + votes + "</h5>");
 		restaurantDiv.append("<h5> Comments: " + textRating + "</h5>");
-		restaurantDiv.append("<h3>_____________________________</h3>")
 
 	// Console log loop
 		// console.log(restaurantName);
@@ -129,7 +134,8 @@
 		// console.log(userRating);
 		// console.log(votes);
 		// console.log(textRating);
-			
+		
+	
 	}
 
 	});
