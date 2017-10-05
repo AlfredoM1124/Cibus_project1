@@ -47,7 +47,7 @@
 		var recipeSteps = $("<a/>",{
 			id: "Steps",
 			href: recipeUrl,
-			text: "Recipe",
+			text: "Click Here For Step by Step Recipe",
 			target: "_blank"
 		})
 		var imageUrl = hits[i].recipe.image;
@@ -66,7 +66,6 @@
 		recipeDiv.append("<h5><strong>Allergy friendly: </strong>" + allergies + "</h5>");
 		recipeDiv.append("<h5><strong>Servings: </strong>" + servings + "</h5>");
 		recipeDiv.append("<h5><strong>Ingredients: </strong>" + ingredients + "</h5>");
-		recipeDiv.append("<h5><i>Click below for step by step recipe:</i></h5>");
 		recipeDiv.append(recipeSteps);		
 
 		//Console log the for loop
