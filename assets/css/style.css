@@ -27,10 +27,7 @@
      1px 1px 0 #000;
 
 }
-#menuRestaurant{
-	color: blue;
 
-}
 #food{
 	margin-top: 20px;
 	margin-right: 15px;
@@ -63,7 +60,8 @@
 	border-width: 1px;
 	border-color: #4ABDAC;
 }
-#menuRestaurant{
+#menuRestaurant, #Steps{
+	color: blue;
 	align-content: center;
 	text-align: right;
 	font-size: 25px;
